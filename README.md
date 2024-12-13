@@ -85,7 +85,7 @@ for example in examples:
 
 ### OUTPUT:
 
-![exp-2 op](https://github.com/user-attachments/assets/a556acce-964f-4d5f-bcd2-ff300495ac9a)
+![Screenshot 2024-12-13 104127](https://github.com/user-attachments/assets/892705e0-f375-444c-9081-eeeff643b7c2)
 
 ### RESULT:
   Thus, the LangChain Expression Language (LCEL) expression that utilizes two prompt parameters and three key components (prompt, model, and output parser) was designed and implemented successfully. And also evaluated its functionality by analyzing relevant examples of its application in real-world scenarios.
