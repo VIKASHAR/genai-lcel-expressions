@@ -31,13 +31,13 @@ Combine the prompt template, model, and output parser into a LangChain pipeline.
 Test the LCEL expression using multiple input values for topic and length.
 
 ### PROGRAM:
-```
+```python
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.output_parsers import StructuredOutputParser, ResponseSchema
 
-# Step 1: Define Parameters and Prompt Template
+# Step 1: Define Parameters and Prompt Template for LCEL expressions
 prompt_template = PromptTemplate(
     input_variables=["topic", "length"],
     template=(
@@ -53,7 +53,7 @@ prompt_template = PromptTemplate(
     )
 )
 
-# Step 2: Define the Output Parser
+# Step 2: Define the Output Parser for Structured Response
 response_schemas = [
     ResponseSchema(name="summary", description="A concise summary of the topic."),
     ResponseSchema(name="word_count", description="The number of words in the summary."),
@@ -61,15 +61,16 @@ response_schemas = [
 output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
 
 # Step 3: Create the LangChain LLM Chain with Gemini Model
-API_KEY = "**************************"
+API_KEY = "*****************"  # Replace with your API key
 llm = ChatGoogleGenerativeAI(model="gemini-pro", temperature=0.3, google_api_key=API_KEY)
 
 chain = LLMChain(prompt=prompt_template, llm=llm, output_parser=output_parser)
 
 # Step 4: Execute the Chain with Examples
 examples = [
-    {"topic": "Climate Change", "length": "50"},
-    {"topic": "Artificial Intelligence", "length": "30"},
+    {"topic": "Generative AI in Content Creation", "length": "80"},
+    {"topic": "Applications of Generative AI in Healthcare", "length": "120"},
+    {"topic": "Ethical Considerations in Generative AI", "length": "100"},
 ]
 
 for example in examples:
@@ -79,6 +80,7 @@ for example in examples:
         print(f"Output: {result}\n")
     except Exception as e:
         print(f"Error for input {example}: {e}\n")
+
 ```
 
 ### OUTPUT:
